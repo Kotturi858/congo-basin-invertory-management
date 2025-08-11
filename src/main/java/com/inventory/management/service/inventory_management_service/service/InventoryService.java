@@ -96,7 +96,8 @@ public class InventoryService {
                 inventoryItem.getProductName(),
                 inventoryItem.getStockQuantity(),
                 inventoryItem.getReservedQuantity(),
-                inventoryItem.getLowStockThreshold()
+                inventoryItem.getLowStockThreshold(),
+                true
         );
     }
 }

@@ -65,7 +65,7 @@ public class InventoryController {
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         } catch (IllegalStateException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new InventoryItemDTO(request.getProductId(), false), HttpStatus.CONFLICT);
         } catch (Exception e) {
             return new ResponseEntity<>("Error reserving stock: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
