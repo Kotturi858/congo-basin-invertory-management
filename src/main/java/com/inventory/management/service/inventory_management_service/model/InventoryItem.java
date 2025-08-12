@@ -6,8 +6,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.*;
 
 @Entity
+@Data
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "inventory_items")
 public class InventoryItem {
 
@@ -30,68 +36,16 @@ public class InventoryItem {
     @Column(name = "low_stock_threshold", nullable = false)
     private Integer lowStockThreshold;
 
-    public InventoryItem() {
-    }
+    @Column(name = "unit_price")
+    private Double price;
 
-    public InventoryItem(String productId, String productName, Integer stockQuantity, Integer lowStockThreshold) {
+    public InventoryItem(String productId, String productName, Integer stockQuantity, Integer reservedQuantity, Integer lowStockThreshold, Double price) {
         this.productId = productId;
         this.productName = productName;
         this.stockQuantity = stockQuantity;
-        this.reservedQuantity = 0;
-        this.lowStockThreshold = lowStockThreshold;
-    }
-
-    // Getters and Setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public Integer getStockQuantity() {
-        return stockQuantity;
-    }
-
-    public void setStockQuantity(Integer stockQuantity) {
-        this.stockQuantity = stockQuantity;
-    }
-
-    public Integer getReservedQuantity() {
-        return reservedQuantity;
-    }
-
-    public void setReservedQuantity(Integer reservedQuantity) {
         this.reservedQuantity = reservedQuantity;
-    }
-
-    public Integer getLowStockThreshold() {
-        return lowStockThreshold;
-    }
-
-    public void setLowStockThreshold(Integer lowStockThreshold) {
         this.lowStockThreshold = lowStockThreshold;
-    }
-
-    public Integer getAvailableQuantity() {
-        return stockQuantity - reservedQuantity;
+        this.price = price;
     }
 
     @Override

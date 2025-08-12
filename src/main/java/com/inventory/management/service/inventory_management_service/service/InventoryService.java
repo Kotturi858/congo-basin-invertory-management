@@ -30,7 +30,9 @@ public class InventoryService {
                 inventoryItemDTO.getProductId(),
                 inventoryItemDTO.getProductName(),
                 inventoryItemDTO.getStockQuantity(),
-                inventoryItemDTO.getLowStockThreshold()
+                0,
+                inventoryItemDTO.getLowStockThreshold(),
+                inventoryItemDTO.getPrice()
         );
 
         InventoryItem savedItem = inventoryRepository.save(inventoryItem);
@@ -97,7 +99,8 @@ public class InventoryService {
                 inventoryItem.getStockQuantity(),
                 inventoryItem.getReservedQuantity(),
                 inventoryItem.getLowStockThreshold(),
-                true
+                true,
+                inventoryItem.getPrice()
         );
     }
 }
